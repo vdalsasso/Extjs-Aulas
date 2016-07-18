@@ -1,0 +1,74 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../ext-421/resources/css/ext-all.css">
+	<script type="text/javascript" src="../ext-421/ext-all.js"></script>
+</head>
+<body>
+	<div id="botao01"></div>
+	<div id="botao02"></div>
+	<div id="botao03"></div>
+</body>
+
+
+	<script type="text/javascript">
+	/* - - Teste - - */
+	Ext.define('Funcionario', {
+		extend: 'Ext.data.Model',
+
+		fields: [
+			{name: 'nome'}, //type: auto
+			{name: 'idade', type: 'int'},
+			{name: 'salario', type: 'float'},
+			{name: 'ativo', type: 'boolean'},
+			{name: 'nasc', type: 'date', dateFormat: 'd/m/Y'},
+			{name: 'usuario', type: 'string'},
+			{name: 'email', type: 'string',
+				convert : function (value, record) {
+					return record.get('usuario') + '@email.com';
+				}
+			}
+			
+		]
+	});
+
+
+	Ext.define('Contato', {
+		extend: 'Ext.data.Model',
+		fields: ['id', 'nome', 'tel']
+	});
+
+	Ext.onReady(function(){
+
+		/*var funcionario =  Ext.create('Funcionario', {
+			nome: 'Bagulheiro',
+			idade: 25,
+			salario: 1.000,
+			ativo: true,
+			nasc: '26/05/1986',
+			usuario: 'bagulheiro'
+		});*/
+
+		var funcionario =  Ext.create('Funcionario', {
+			nome: 'Bagulheiro',
+			idade: 25,
+			salario: 1.000,
+			ativo: true,
+			nasc: '26/05/1986',
+			usuario: 'bagulheiro'
+		});
+
+		console.log(funcionario);
+		console.log(funcionario.get('nome'));
+		funcionario.set('idade', 20);
+		console.log(funcionario.get('idade'));
+
+		var contato = Ext.create('Contato', {
+			id: 1,
+			nome: 'Bagulheiro',
+			tel: '00345464535'
+		});
+		console.log(contato);
+	});
+	</script>
+
+</html>
